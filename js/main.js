@@ -1,6 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Load events from JSON
     loadEvents();
+
+    // Load archived events
+    loadArchivedEvents('data/archived-events.json');
+    
+    // Simulate live stream stats updates
+    updateStreamStats();
     
     // Event filtering
     const filterButtons = document.querySelectorAll('.filter-btn');
@@ -46,6 +52,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+function displayEvents(events, targetElementId) {
+    const eventsList = document.getElementById(targetElementId);
+    eventsList.innerHTML = '';
+    
+    if (events.length === 0) {
+        eventsList.innerHTML = '<p>No events found.</p>';
+        return;
+    }
 
 function loadEvents() {
     fetch('events.json')
@@ -119,3 +134,4 @@ function filterEvents(filter) {
         displayEvents(filteredEvents);
     }
 }
+

@@ -839,3 +839,82 @@ footer {
   background: #f0f0f0;
   min-height: 180px;
 }
+
+
+/* Mobile Menu Toggle - Hidden by default */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    /* Show mobile menu toggle */
+    .menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+    }
+
+    /* Hide desktop nav by default */
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        z-index: 1000;
+        flex-direction: column;
+        padding: 0;
+    }
+
+    /* Show nav when mobile menu is active */
+    nav ul.active {
+        display: flex;
+    }
+
+    /* Style mobile nav items */
+    nav ul li {
+        margin: 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    nav ul li a {
+        padding: 1rem;
+        display: block;
+    }
+
+    /* Fix button tap targets */
+    .btn, .filter-btn, .event-actions button {
+        min-width: 44px;
+        min-height: 44px;
+        padding: 12px 20px;
+    }
+
+    /* Prevent button highlight on tap */
+    button, a {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Fix form elements */
+    input, select, textarea {
+        font-size: 16px; /* Prevents iOS zooming */
+    }
+}
+
+/* Desktop Styles */
+@media (min-width: 769px) {
+    /* Ensure desktop nav is visible */
+    nav ul {
+        display: flex !important;
+    }
+    
+    /* Hide mobile menu toggle */
+    .menu-toggle {
+        display: none !important;
+    }
+}

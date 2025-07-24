@@ -417,6 +417,141 @@ footer {
     padding: 3rem 0 0;
 }
 
+/* Live Events Section */
+.live-events {
+    padding: 5rem 0;
+    background: var(--dark-color);
+    color: white;
+}
+
+.live-events h2, .live-events h3 {
+    color: white;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.live-stream {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.stream-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+}
+
+.stream-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+.stream-info {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.stream-info h3 {
+    text-align: left;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.stream-info p {
+    margin-bottom: 1.5rem;
+    color: #ddd;
+}
+
+.stream-stats {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.stream-stats span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.archived-events {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.archived-event {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.archived-event:hover {
+    transform: translateY(-5px);
+}
+
+.archived-event-thumbnail {
+    position: relative;
+}
+
+.archived-event-thumbnail img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.archived-event-thumbnail .play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.8);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+}
+
+.archived-event-info {
+    padding: 1rem;
+}
+
+.archived-event-info h4 {
+    margin-bottom: 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.archived-event-meta {
+    display: flex;
+    justify-content: space-between;
+    color: #bbb;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .live-stream {
+        grid-template-columns: 1fr;
+    }
+    
+    .stream-info h3 {
+        font-size: 1.2rem;
+    }
+}
+
 .footer-content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));

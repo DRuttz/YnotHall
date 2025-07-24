@@ -1,0 +1,44 @@
+[
+    {
+        "title": "Weekly Pool Tournament",
+        "date": "2023-12-15T19:00:00",
+        "type": "tournament",
+        "description": "Join our weekly pool tournament with cash prizes for top players. All skill levels welcome!",
+        "capacity": 32
+    },
+    {
+        "title": "Friday Night Social",
+        "date": "2023-12-16T20:00:00",
+        "type": "social",
+        "description": "Relaxed social evening with music, drinks specials, and casual games. Perfect for beginners!",
+        "capacity": 50
+    },
+    {
+        "title": "Snooker League - Week 5",
+        "date": "2023-12-18T18:30:00",
+        "type": "league",
+        "description": "Week 5 of our competitive snooker league. Spectators welcome!",
+        "capacity": 12
+    },
+    {
+        "title": "Darts Championship",
+        "date": "2023-12-20T19:30:00",
+        "type": "tournament",
+        "description": "Annual darts championship with £500 prize pool. Registration required.",
+        "capacity": 24
+    },
+    {
+        "title": "New Players Night",
+        "date": "2023-12-22T18:00:00",
+        "type": "social",
+        "description": "Special event for new players with free coaching and discounted table rates.",
+        "capacity": 40
+    },
+    {
+        "title": "Team Pool Challenge",
+        "date": "2023-12-23T14:00:00",
+        "type": "tournament",
+        "description": "Team-based pool tournament (2 players per team). Bring a partner or we'll match you up!",
+        "capacity": 16
+    }
+]

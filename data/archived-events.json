@@ -1,0 +1,50 @@
+[
+    {
+        "title": "2023 Summer Pool Championship Finals",
+        "date": "2023-08-20",
+        "duration": "2h 45m",
+        "url": "https://youtube.com/watch?v=example1",
+        "thumbnail": "https://i.ytimg.com/vi/example1/hqdefault.jpg",
+        "views": "12,345"
+    },
+    {
+        "title": "Friday Night Showdown - August Edition",
+        "date": "2023-08-11",
+        "duration": "3h 12m",
+        "url": "https://youtube.com/watch?v=example2",
+        "thumbnail": "https://i.ytimg.com/vi/example2/hqdefault.jpg",
+        "views": "8,762"
+    },
+    {
+        "title": "Snooker Masters Exhibition Match",
+        "date": "2023-07-29",
+        "duration": "1h 58m",
+        "url": "https://youtube.com/watch?v=example3",
+        "thumbnail": "https://i.ytimg.com/vi/example3/hqdefault.jpg",
+        "views": "15,432"
+    },
+    {
+        "title": "Darts Tournament Semi-Finals",
+        "date": "2023-07-15",
+        "duration": "2h 30m",
+        "url": "https://youtube.com/watch?v=example4",
+        "thumbnail": "https://i.ytimg.com/vi/example4/hqdefault.jpg",
+        "views": "9,876"
+    },
+    {
+        "title": "Pool Trick Shot Competition",
+        "date": "2023-06-28",
+        "duration": "1h 45m",
+        "url": "https://youtube.com/watch?v=example5",
+        "thumbnail": "https://i.ytimg.com/vi/example5/hqdefault.jpg",
+        "views": "23,456"
+    },
+    {
+        "title": "Charity Snooker Match",
+        "date": "2023-06-10",
+        "duration": "4h 05m",
+        "url": "https://youtube.com/watch?v=example6",
+        "thumbnail": "https://i.ytimg.com/vi/example6/hqdefault.jpg",
+        "views": "18,345"
+    }
+]

@@ -654,3 +654,188 @@ footer {
         font-size: 1.2rem;
     }
 }
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+  header {
+    position: relative;
+    padding: 0.5rem 0;
+  }
+  
+  .logo h1 {
+    font-size: 1.2rem;
+  }
+  
+  nav ul {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+    padding: 0;
+  }
+  
+  nav ul.show {
+    display: flex;
+  }
+  
+  nav ul li {
+    margin: 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  nav ul li a {
+    padding: 1rem;
+    display: block;
+  }
+  
+  .menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    color: var(--primary-color);
+  }
+}
+
+/* Mobile Events */
+@media (max-width: 600px) {
+  .event-card, .archived-event {
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+  
+  .event-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .event-actions .btn {
+    width: 100%;
+  }
+  
+  .event-filters {
+    flex-direction: column;
+  }
+  
+  .filter-btn {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Mobile Forms */
+@media (max-width: 600px) {
+  .form-group input, 
+  .form-group select,
+  .form-group textarea {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+  
+  .btn {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+  }
+  
+  #newsletter-form {
+    flex-direction: column;
+  }
+  
+  #newsletter-form input {
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+  }
+  
+  #newsletter-form button {
+    border-radius: 5px;
+    width: 100%;
+  }
+  
+  .contact-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile Hero */
+@media (max-width: 768px) {
+  .hero {
+    height: auto;
+    padding: 6rem 0;
+    margin-top: 60px;
+  }
+  
+  .hero h2 {
+    font-size: 2rem;
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+  }
+}
+
+/* Touch Targets */
+.btn, .filter-btn, .event-actions button {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.play-btn {
+  width: 60px;
+  height: 60px;
+  font-size: 1.5rem;
+}
+
+/* Mobile Live Stream */
+@media (max-width: 768px) {
+  .live-stream {
+    grid-template-columns: 1fr;
+  }
+  
+  .stream-info {
+    padding: 1rem;
+  }
+  
+  .stream-info h3 {
+    font-size: 1.2rem;
+  }
+  
+  .stream-stats {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+/* Mobile Pricing */
+@media (max-width: 768px) {
+  .pricing-tables {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Error message styling */
+.error {
+  color: #ff6b6b;
+  text-align: center;
+  padding: 1rem;
+  background: rgba(255, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+/* Fallback for missing thumbnails */
+.archived-event-thumbnail img {
+  background: #f0f0f0;
+  min-height: 180px;
+}

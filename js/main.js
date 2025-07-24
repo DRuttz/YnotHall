@@ -1,4 +1,24 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navUl = document.querySelector('nav ul');
+    
+    if (menuToggle && navUl) {
+        menuToggle.addEventListener('click', function() {
+            navUl.classList.toggle('show');
+        });
+        
+        // Close menu when clicking a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                navUl.classList.remove('show');
+            });
+        });
+    }
+    
+    // Initialize mobile filters
+    initMobileFilters();
+    
     // Load upcoming events
     loadEvents('data/events.json', 'events-list');
     
@@ -8,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Simulate live stream stats updates
     updateStreamStats();
     
-    // Event filtering
+    // Event filtering for desktop
     const filterButtons = document.querySelectorAll('.filter-btn');
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
@@ -23,13 +43,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Form submissions
-    document.getElementById('booking-form').addEventListener('submit', function(e) {
+    document.getElementById('booking-form')?.addEventListener('submit', function(e) {
         e.preventDefault();
         alert('Booking request submitted! We will contact you shortly to confirm.');
         this.reset();
     });
     
-    document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+    document.getElementById('newsletter-form')?.addEventListener('submit', function(e) {
         e.preventDefault();
         alert('Thanks for subscribing to our newsletter!');
         this.reset();
@@ -51,7 +71,43 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+    
+    // Load mobile-specific assets
+    loadMobileAssets();
 });
+
+function initMobileFilters() {
+    if (window.innerWidth < 768) {
+        const filterContainer = document.querySelector('.event-filters');
+        if (filterContainer && !filterContainer.querySelector('.mobile-filter')) {
+            filterContainer.innerHTML = `
+                <select class="mobile-filter">
+                    <option value="all">All Events</option>
+                    <option value="tournament">Tournaments</option>
+                    <option value="league">Leagues</option>
+                    <option value="social">Social Events</option>
+                </select>
+            `;
+            
+            document.querySelector('.mobile-filter').addEventListener('change', function() {
+                filterEvents(this.value);
+            });
+        }
+    }
+}
+
+function loadMobileAssets() {
+    if (window.innerWidth < 768) {
+        // Load smaller images for mobile if available
+        const mobileImages = document.querySelectorAll('img[data-mobile-src]');
+        mobileImages.forEach(img => {
+            const mobileSrc = img.getAttribute('data-mobile-src');
+            if (mobileSrc) {
+                img.src = mobileSrc;
+            }
+        });
+    }
+}
 
 function loadEvents(url, targetElementId) {
     fetch(url)
@@ -69,7 +125,7 @@ function loadEvents(url, targetElementId) {
             console.error('Error loading events:', error);
             const storedEvents = localStorage.getItem('ynot-events');
             if (storedEvents) {
-                displayEvents(JSON.parse(storedEvents), targetElementId;
+                displayEvents(JSON.parse(storedEvents), targetElementId);
             } else {
                 document.getElementById(targetElementId).innerHTML = 
                     '<p class="error">Unable to load events at this time. Please check back later.</p>';
@@ -90,17 +146,14 @@ function loadArchivedEvents(url) {
         })
         .catch(error => {
             console.error('Error loading archived events:', error);
-            document.querySelector('.archived-events').innerHTML = 
+            document.querySelector('.archived-events')?.innerHTML = 
                 '<p class="error">Unable to load previous events. Please try again later.</p>';
         });
 }
 
 function displayEvents(events, targetElementId) {
     const eventsList = document.getElementById(targetElementId);
-    if (!eventsList) {
-        console.error('Events list container not found');
-        return;
-    }
+    if (!eventsList) return;
     
     eventsList.innerHTML = '';
     
@@ -142,10 +195,7 @@ function displayEvents(events, targetElementId) {
 
 function displayArchivedEvents(events) {
     const container = document.querySelector('.archived-events');
-    if (!container) {
-        console.error('Archived events container not found');
-        return;
-    }
+    if (!container) return;
     
     container.innerHTML = '';
     
@@ -189,15 +239,14 @@ function filterEvents(filter) {
 }
 
 function updateStreamStats() {
-    // Only run if we're on the live events page
     if (!document.getElementById('viewer-count')) return;
     
     // Simulate updating viewer count
     setInterval(() => {
         const viewerCount = document.getElementById('viewer-count');
         const current = parseInt(viewerCount.textContent.replace(/,/g, '')) || 1000;
-        const change = Math.floor(Math.random() * 20) - 5; // Random change between -5 and +15
-        const newCount = Math.max(1000, current + change); // Don't go below 1000
+        const change = Math.floor(Math.random() * 20) - 5;
+        const newCount = Math.max(1000, current + change);
         viewerCount.textContent = newCount.toLocaleString();
     }, 5000);
     
@@ -205,7 +254,13 @@ function updateStreamStats() {
     setInterval(() => {
         const commentCount = document.getElementById('comment-count');
         const current = parseInt(commentCount.textContent) || 0;
-        const change = Math.floor(Math.random() * 5) + 1; // Random change between 1 and 5
+        const change = Math.floor(Math.random() * 5) + 1;
         commentCount.textContent = current + change;
     }, 8000);
 }
+
+// Handle window resize
+window.addEventListener('resize', function() {
+    initMobileFilters();
+    loadMobileAssets();
+});

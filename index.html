@@ -6,14 +6,14 @@
   <title>YNot Sports Hall</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    fetch('/components/header.html')
+    fetch('YnotHall/components/header.html')
       .then(res => res.text())
       .then(data => document.getElementById('header').innerHTML = data);
-    fetch('/components/footer.html')
+    fetch('YnotHall/components/footer.html')
       .then(res => res.text())
       .then(data => document.getElementById('footer').innerHTML = data);
 
-    fetch('/data/events.json')
+    fetch('YnotHall/data/events.json')
       .then(res => res.json())
       .then(events => {
         const container = document.getElementById('events-list');
@@ -49,10 +49,10 @@
       <div class="flex justify-between h-16">
         <div class="flex-shrink-0 flex items-center text-xl font-bold">YNot Hall</div>
         <div class="hidden md:flex items-center space-x-4">
-          <a href="/index.html" class="text-blue-600 hover:underline">Home</a>
-          <a href="/events.html" class="text-blue-600 hover:underline">Events</a>
-          <a href="/booking.html" class="text-blue-600 hover:underline">Booking</a>
-          <a href="/gallery.html" class="text-blue-600 hover:underline">Gallery</a>
+          <a href="YnotHall/index.html" class="text-blue-600 hover:underline">Home</a>
+          <a href="YnotHall/events.html" class="text-blue-600 hover:underline">Events</a>
+          <a href="YnotHall/booking.html" class="text-blue-600 hover:underline">Booking</a>
+          <a href="YnotHall/gallery.html" class="text-blue-600 hover:underline">Gallery</a>
         </div>
         <div class="md:hidden flex items-center">
           <button onclick="toggleMenu()" class="text-blue-600 focus:outline-none z-20 relative">
@@ -71,10 +71,10 @@
     <!-- Sliding menu -->
     <div id="mobile-menu"
       class="fixed top-0 left-0 h-full w-64 bg-white shadow transform -translate-x-full transition-transform z-20">
-      <a href="/index.html" class="block py-4 px-6 border-b text-blue-600 hover:underline">Home</a>
-      <a href="/events.html" class="block py-4 px-6 border-b text-blue-600 hover:underline">Events</a>
-      <a href="/booking.html" class="block py-4 px-6 border-b text-blue-600 hover:underline">Booking</a>
-      <a href="/gallery.html" class="block py-4 px-6 border-b text-blue-600 hover:underline">Gallery</a>
+      <a href="YnotHall/index.html" class="block py-4 px-6 border-b text-blue-600 hover:underline">Home</a>
+      <a href="YnotHall/events.html" class="block py-4 px-6 border-b text-blue-600 hover:underline">Events</a>
+      <a href="YnotHall/booking.html" class="block py-4 px-6 border-b text-blue-600 hover:underline">Booking</a>
+      <a href="YnotHall/gallery.html" class="block py-4 px-6 border-b text-blue-600 hover:underline">Gallery</a>
     </div>
   </nav>
 

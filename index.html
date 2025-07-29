@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ynot Sports Hall</title>
+  <title>YNot Sports Hall</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     html {
@@ -14,23 +14,42 @@
       text-decoration: underline;
       color: #2563eb;
     }
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .calendar-item {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    .calendar-date {
+      font-weight: bold;
+      color: #1f2937;
+    }
+    .calendar-title {
+      color: #374151;
+    }
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      fetch('/YnotHall/components/footer.html')
+      fetch('/components/footer.html')
         .then(res => res.text())
         .then(data => document.getElementById('footer').innerHTML = data);
 
-      fetch('YnotHall/data/events.json')
+      fetch('/data/events.json')
         .then(res => res.json())
         .then(events => {
           const container = document.getElementById('events-list');
           if (Array.isArray(events)) {
             events.forEach(event => {
-              const li = document.createElement('li');
-              li.className = 'p-4 border rounded shadow';
-              li.textContent = `${event.date} - ${event.title}`;
-              container.appendChild(li);
+              const div = document.createElement('div');
+              div.className = 'calendar-item';
+              div.innerHTML = `<div class="calendar-date">${event.date}</div><div class="calendar-title">${event.title}</div>`;
+              container.appendChild(div);
             });
           }
         });
@@ -93,7 +112,7 @@
 
   <main class="flex-grow">
     <section id="home" class="text-center py-10 bg-white shadow-md">
-      <h1 class="text-4xl font-bold mb-2">Ynot Pool & Sports Hall</h1>
+      <h1 class="text-4xl font-bold mb-2">YNot Pool & Sports Hall</h1>
       <p class="text-lg text-gray-600">Enjoy pool, snooker, darts, drinks and live events all under one roof.</p>
     </section>
 
@@ -118,7 +137,7 @@
 
     <section id="events" class="p-6 bg-white mt-6">
       <h2 class="text-3xl font-bold mb-4">Upcoming Events</h2>
-      <ul id="events-list" class="space-y-2"></ul>
+      <div id="events-list" class="calendar"></div>
     </section>
 
     <section id="stream" class="p-6 bg-gray-50 mt-6">

@@ -3,26 +3,59 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YNot Sports Hall</title>
+  <title>Ynot Sports Hall</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    .active {
+      font-weight: bold;
+      text-decoration: underline;
+      color: #2563eb;
+    }
+  </style>
   <script>
-    fetch('/components/footer.html')
-      .then(res => res.text())
-      .then(data => document.getElementById('footer').innerHTML = data);
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('/YnotHall/components/footer.html')
+        .then(res => res.text())
+        .then(data => document.getElementById('footer').innerHTML = data);
 
-    fetch('/data/events.json')
-      .then(res => res.json())
-      .then(events => {
-        const container = document.getElementById('events-list');
-        if (Array.isArray(events)) {
-          events.forEach(event => {
-            const li = document.createElement('li');
-            li.className = 'p-4 border rounded shadow';
-            li.textContent = `${event.date} - ${event.title}`;
-            container.appendChild(li);
-          });
-        }
-      });
+      fetch('YnotHall/data/events.json')
+        .then(res => res.json())
+        .then(events => {
+          const container = document.getElementById('events-list');
+          if (Array.isArray(events)) {
+            events.forEach(event => {
+              const li = document.createElement('li');
+              li.className = 'p-4 border rounded shadow';
+              li.textContent = `${event.date} - ${event.title}`;
+              container.appendChild(li);
+            });
+          }
+        });
+
+      function onScroll() {
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav a');
+
+        let current = "";
+        sections.forEach(section => {
+          const top = section.offsetTop - 80;
+          if (pageYOffset >= top) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        navLinks.forEach(link => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === `#${current}`) {
+            link.classList.add("active");
+          }
+        });
+      }
+      window.addEventListener("scroll", onScroll);
+    });
 
     function toggleMenu() {
       const menu = document.getElementById('mobile-menu');
@@ -33,8 +66,8 @@
 <body class="bg-gray-100 text-gray-800 flex flex-col min-h-screen">
   <nav class="bg-white shadow sticky top-0 z-10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between h-16">
-        <div class="flex-shrink-0 flex items-center text-xl font-bold">YNot Hall</div>
+      <div class="flex justify-between h-16 items-center">
+        <div class="text-xl font-bold">YNot Hall</div>
         <div class="hidden md:flex items-center space-x-4">
           <a href="#home" class="text-blue-600 hover:underline">Home</a>
           <a href="#events" class="text-blue-600 hover:underline">Events</a>
@@ -50,17 +83,17 @@
         </div>
       </div>
     </div>
-    <div id="mobile-menu" class="md:hidden hidden px-4 pb-4">
-      <a href="#home" class="block py-2 text-blue-600 hover:underline">Home</a>
-      <a href="#events" class="block py-2 text-blue-600 hover:underline">Events</a>
-      <a href="#stream" class="block py-2 text-blue-600 hover:underline">Live Stream</a>
-      <a href="#booking" class="block py-2 text-blue-600 hover:underline">Booking</a>
+    <div id="mobile-menu" class="md:hidden hidden px-4 pb-4 space-y-2">
+      <a href="#home" class="block text-blue-600 hover:underline">Home</a>
+      <a href="#events" class="block text-blue-600 hover:underline">Events</a>
+      <a href="#stream" class="block text-blue-600 hover:underline">Live Stream</a>
+      <a href="#booking" class="block text-blue-600 hover:underline">Booking</a>
     </div>
   </nav>
 
   <main class="flex-grow">
     <section id="home" class="text-center py-10 bg-white shadow-md">
-      <h1 class="text-4xl font-bold mb-2">YNot Pool & Sports Hall</h1>
+      <h1 class="text-4xl font-bold mb-2">Ynot Pool & Sports Hall</h1>
       <p class="text-lg text-gray-600">Enjoy pool, snooker, darts, drinks and live events all under one roof.</p>
     </section>
 
